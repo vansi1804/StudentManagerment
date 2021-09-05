@@ -3,10 +3,12 @@ package schoolmanagement.schoolmanagement;
 // import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
+import java.util.Scanner;
+
+import schoolmanagement.schoolmanagement.Sort.*;
 
 
-public class StudentList {
+public class StudentList{
     private ArrayList<Student> studentlist = new ArrayList<>();
 
     public ArrayList<Student> getStudentlist() {
@@ -28,22 +30,34 @@ public class StudentList {
         }
     }
 
-    public void SortByName() {
-        Collections.sort(studentlist, new Comparator<Student>() { 
-            @Override public int compare(Student st1, Student st2) { 
-              return st1.getName().compareToIgnoreCase(st2.getName()); 
-          } });
-    }
-
-    public void SortByMark() {
-        Collections.sort(studentlist, new Comparator<Student>() { 
-            @Override public int compare(Student st1, Student st2) { 
-              if(st1.getAvgMark() > st2.getAvgMark())
-                return -1;
-                else if (st1.getAvgMark() < st2.getAvgMark())
-                    return 1;
-                return 0;
-          } });
+    Scanner sc = new Scanner(System.in);
+    public void Sort() {
+        while (true) {
+            int choose = 0;
+            boolean check = false;
+            while (!check) {
+                System.out.println("0.Exit");
+                System.out.println("1. Sort by Name. ");
+                System.out.println("2. Sort by Average Mark. ");
+                System.out.print("Choose? __");
+                try {
+                    choose = Integer.parseInt(sc.nextLine());
+                    check = true;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    check = false;
+                }
+            }
+            switch (choose) {
+                case 0: return;
+                case 1:  Collections.sort(studentlist, new SortByName());
+                    return;
+                case 2:  Collections.sort(studentlist, new SortByAVGMark());
+                    return;
+                default:    System.err.println("\nChoice is not legal");
+                    break;
+            }
+        }
     }
 
     public int ExistRollnoAtIndex(String rollno) {
@@ -75,14 +89,14 @@ public class StudentList {
     public void init() {
         Add(new Student("A", "1", "1/1/1", "1D", "111", 1, "1@"));
         Add(new Student("B", "0", "1/2/2", "2D", "222", (float) 8.5, "1@"));
-        Add(new Student("C", "1", "1/2/3", "3D", "333", 4, "1@"));
+        Add(new Student("3", "1", "1/2/3", "3D", "333", 4, "1@"));
         Add(new Student("D", "1", "2/2/2", "4D", "444", 8, "1@"));
-        Add(new Student("E", "0", "2/3/3", "5D", "555", 5, "1@"));
-        Add(new Student("F", "0", "2/3/4", "6D", "666", 7, "1@"));
-        Add(new Student("G", "0", "3/3/3", "7D", "777", 3, "1@"));
+        Add(new Student("2", "0", "2/3/3", "5D", "555", 5, "1@"));
+        Add(new Student("C", "0", "2/3/4", "6D", "666", 7, "1@"));
+        Add(new Student("7", "0", "3/3/3", "7D", "777", 3, "1@"));
         Add(new Student("H", "1", "3/4/4", "8", "888", 9, "1@"));
-        Add(new Student("I", "1", "3/4/5", "9D", "999", 0, "1@"));
-        Add(new Student("K", "1", "4/4/4", "10D", "101", 10, "1@"));
+        Add(new Student("1", "1", "3/4/5", "9D", "999", 0, "1@"));
+        Add(new Student("E", "1", "4/4/4", "10D", "101", 10, "1@"));
     }
 
     // void writeDataToFile(String filename) {

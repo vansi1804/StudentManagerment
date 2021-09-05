@@ -3,10 +3,12 @@ package schoolmanagement.schoolmanagement;
 import java.io.Serializable;
 import java.util.Scanner;
 
+
 public class Student extends Person implements Serializable{
     private String rollno;
     private float avgMark;
     private String email;
+
     public Student() {
         super();
         this.rollno = null;
@@ -56,24 +58,24 @@ public class Student extends Person implements Serializable{
     }
     public boolean checkEmail(String email){
         if(email.indexOf("@")==-1 || email.indexOf(" ")!=-1){
-            System.err.println("\t->>>Email is illegal (email must have character '@' and not have space).");
+            System.err.println("\t->>>Email is illegal (email must have character '@' and not have space)");
             return false;
         } 
         return true; 
     }
 
     public boolean hasScholarship() {
-        if(avgMark >= 8){
-            return true;
-        }
-        return false;
+        return avgMark>=8 ? true:false;
     }
 
     Scanner sc = new Scanner(System.in);
     public void input(){
-        super.input();
+
         System.out.print("Rollno: ");
         setRollno(sc.nextLine());
+
+        super.input();
+        
         boolean check;
         do{
             System.out.print("Mark: ");
@@ -98,6 +100,6 @@ public class Student extends Person implements Serializable{
 
     @Override 
     public String toString(){
-        return super.toString() + "," + rollno + ", " + avgMark + ", " + email;
+        return  rollno + ", " + super.toString() + ", " + avgMark + ", " + email;
     }
 }

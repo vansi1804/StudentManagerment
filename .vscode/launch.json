@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch StudentMAIN",
+            "request": "launch",
+            "mainClass": "schoolmanagement.schoolmanagement.StudentMAIN",
+            "projectName": "SchoolManagement"
+        },
+        {
+            "type": "java",
             "name": "Launch StudentTest",
             "request": "launch",
             "mainClass": "schoolmanagement.schoolmanagement.StudentTest",

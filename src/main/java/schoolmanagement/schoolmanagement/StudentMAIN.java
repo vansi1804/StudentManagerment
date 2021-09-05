@@ -1,6 +1,7 @@
 package schoolmanagement.schoolmanagement;
 
 import java.util.Scanner;
+
 public class StudentMAIN {
 
     static Scanner sc = new Scanner(System.in);
@@ -23,8 +24,7 @@ public class StudentMAIN {
             }
             switch (choose) {
                 case 0: return;
-
-                case 1: System.out.print("Enter student's information: ");
+                case 1: System.out.println("Enter student's information: ");
                         Student student = new Student();
                         student.input();
                         if (studentList.ExistRollnoAtIndex(student.getRollno()) == -1) {
@@ -41,11 +41,11 @@ public class StudentMAIN {
                         studentList.FindByRollno(rollno);
                     break;
 
-                case 4: studentList.SortByName();
+                case 4: studentList.Sort();
                     System.out.print("Student list is sorted. ");
                     break;
 
-                case 5: studentList.SortByMark();
+                case 5:
                         System.out.println(studentList.ScholarshipStudentList());
                     break;
 
@@ -71,8 +71,8 @@ public class StudentMAIN {
         System.out.println("\t\t\t\t\t\t\t3.Find student");
         System.out.println("\t\t\t\t\t\t\t4.Sort student list");
         System.out.println("\t\t\t\t\t\t\t5.Show student's information who has scholarship");
-        System.out.println("\t\t\t\t\t\t\t6.Save to file.");
-        System.out.println("\t\t\t\t\t\t\t7.Read from file.");
+        // System.out.println("\t\t\t\t\t\t\t6.Save to file.");
+        // System.out.println("\t\t\t\t\t\t\t7.Read from file.");
         System.out.print("\t\t\t\t\t\t\t\tChoose? __");
     }
     

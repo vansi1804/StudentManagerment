@@ -4,18 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class Person {
-
     private String name;
     private String gender;
     private String birthDay;
     private String address;
 
-    public Person() {
-        this.name = null;
-        this.gender = null;
-        this.birthDay = null;
-        this.address = null;
-    }
+    public Person() {}
 
     public Person(String name, String gender, String birthDay, String address) {
         setName(name);
@@ -44,18 +38,16 @@ public class Person {
     }
 
     public void setGender(String gender) {
-        if(gender.equalsIgnoreCase("male") || Integer.parseInt(gender) == 1){
-            this.gender = "male";
-        } else if(gender.equalsIgnoreCase("female") || Integer.parseInt(gender) == 0){
-            this.gender = "female";
-        }
+        this.gender = (gender.equalsIgnoreCase("male") || Integer.parseInt(gender) == 1)?
+                       "male":"female";
     }
+
     public boolean checkGender(String gender){
         try {
             if(!gender.equalsIgnoreCase("male") && 
-                !gender.equalsIgnoreCase("female") && 
-                Integer.parseInt(gender) != 0 && 
-                Integer.parseInt(gender) != 1){
+                Integer.parseInt(gender) != 1 &&
+                !gender.equalsIgnoreCase("female") &&
+                Integer.parseInt(gender) != 0){
                     System.err.println("\t->>>Enter (0/1 or male/female) for gender. ");
                     return false;
             } else return true;
@@ -96,7 +88,7 @@ public class Person {
 
     Scanner sc = new Scanner(System.in);
     public void input(){
-        System.out.print("\nName: ");
+        System.out.print("Name: ");
         setName(sc.nextLine());
         
         String scan;
@@ -115,7 +107,6 @@ public class Person {
 
         System.out.print("Address: ");
         setAddress(sc.nextLine());
-
     }
 
     public void display(){
