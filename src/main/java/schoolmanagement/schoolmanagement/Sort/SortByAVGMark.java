@@ -3,8 +3,7 @@ import java.util.Comparator;
 
 import schoolmanagement.schoolmanagement.Student;
 
-public class SortByAVGMark implements Comparator
-{
+public class SortByAVGMark implements Comparator{
     @Override
     public int compare(Object o1, Object o2) {
         Student s2=(Student)o2;
